@@ -157,10 +157,21 @@ export default function Home() {
                     <h3 className="project-card-title">{site.name}</h3>
                     <p className="project-card-description">{site.description}</p>
 
+                    {/* Insight Badges */}
                     <div className="flex flex-wrap gap-2 mt-4">
-                      {site.tags.slice(0, 3).map(tag => (
-                        <span key={tag} className="tag-pill">{tag}</span>
-                      ))}
+                      {site.keyInsight && (
+                        <div className="insight-badge">
+                          <span className="insight-value">{site.keyInsight.value}</span>
+                          <span className="insight-label">{site.keyInsight.label}</span>
+                        </div>
+                      )}
+                      {site.datasetSize && (
+                        <div className="dataset-badge">
+                          <span className="dataset-icon">📦</span>
+                          <span className="dataset-value">{site.datasetSize.value}</span>
+                          <span className="dataset-label">{site.datasetSize.label}</span>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </Link>
@@ -249,11 +260,21 @@ export default function Home() {
                   <h3 className="project-card-title">{site.name}</h3>
                   <p className="project-card-description">{site.description}</p>
 
-                  {site.dataSource && (
-                    <p className="text-caption mt-3">
-                      Source: {site.dataSource}
-                    </p>
-                  )}
+                  {/* Insight Badges */}
+                  <div className="flex flex-wrap gap-2 mt-3">
+                    {site.keyInsight && (
+                      <div className="insight-badge-sm">
+                        <span className="insight-value-sm">{site.keyInsight.value}</span>
+                        <span className="insight-label-sm">{site.keyInsight.label}</span>
+                      </div>
+                    )}
+                    {site.datasetSize && (
+                      <div className="dataset-badge-sm">
+                        <span className="dataset-value-sm">{site.datasetSize.value}</span>
+                        <span className="dataset-label-sm">{site.datasetSize.label}</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </Link>
             ))}
