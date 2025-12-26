@@ -2,6 +2,11 @@
 
 import { useState, useEffect, useRef } from 'react';
 
+// Get basePath from environment or default to empty for local dev
+const basePath = process.env.NODE_ENV === 'production'
+    ? '/my-data-analysis-sites-main-site-hub'
+    : '';
+
 interface SiteThumbnailProps {
     siteId: string;
     url: string;
@@ -15,8 +20,8 @@ export function SiteThumbnail({ siteId, url, name, fallbackIcon, className = '' 
     const [isLoading, setIsLoading] = useState(true);
     const imgRef = useRef<HTMLImageElement>(null);
 
-    // Local file first (fastest), fallback to thum.io API
-    const localThumbnail = `/thumbnails/${siteId}.webp`;
+    // Local file first (with basePath for production), fallback to thum.io API
+    const localThumbnail = `${basePath}/thumbnails/${siteId}.webp`;
     const apiThumbnail = `https://image.thum.io/get/width/600/crop/400/${url}`;
     const thumbnailUrl = imageError ? apiThumbnail : localThumbnail;
 
