@@ -2,31 +2,22 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { getSiteById, categoryInfo } from '@/config/sites';
+import { Site } from '@/config/sites';
 
-export default function ProjectPageClient({ id }: { id: string }) {
-    const site = getSiteById(id);
+interface CategoryData {
+    label: string;
+    color: string;
+    icon: string;
+}
+
+interface ProjectPageClientProps {
+    site: Site;
+    category: CategoryData;
+}
+
+export default function ProjectPageClient({ site, category }: ProjectPageClientProps) {
     const [isLoading, setIsLoading] = useState(true);
     const [viewMode, setViewMode] = useState<'iframe' | 'external'>('iframe');
-
-    if (!site) {
-        return (
-            <div className="min-h-screen flex items-center justify-center">
-                <div className="text-center">
-                    <span className="text-6xl mb-4 block">🔍</span>
-                    <h1 className="text-2xl font-bold mb-2">Project Not Found</h1>
-                    <p className="text-[var(--color-text-secondary)] mb-6">
-                        The project you&apos;re looking for doesn&apos;t exist.
-                    </p>
-                    <Link href="/" className="btn-primary inline-block">
-                        ← Back to Catalog
-                    </Link>
-                </div>
-            </div>
-        );
-    }
-
-    const categoryData = categoryInfo[site.category];
 
     return (
         <div className="min-h-screen flex flex-col">
@@ -48,9 +39,9 @@ export default function ProjectPageClient({ id }: { id: string }) {
                     <div className="flex items-center gap-3">
                         <span
                             className="category-badge"
-                            style={{ borderColor: categoryData.color + '40', color: categoryData.color }}
+                            style={{ borderColor: category.color + '40', color: category.color }}
                         >
-                            {categoryData.icon} {categoryData.label}
+                            {category.icon} {category.label}
                         </span>
                         <h1 className="text-lg font-semibold truncate max-w-xs sm:max-w-md">
                             {site.name}
@@ -131,7 +122,7 @@ export default function ProjectPageClient({ id }: { id: string }) {
                         <div className="project-card p-8">
                             <div className="flex items-start gap-6 mb-8">
                                 <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-[var(--color-bg-tertiary)] to-[var(--color-bg-secondary)] flex items-center justify-center text-5xl">
-                                    {categoryData.icon}
+                                    {category.icon}
                                 </div>
                                 <div className="flex-1">
                                     <h2 className="text-3xl font-bold mb-2">{site.name}</h2>
@@ -149,8 +140,8 @@ export default function ProjectPageClient({ id }: { id: string }) {
                             <div className="grid sm:grid-cols-2 gap-6 mb-8">
                                 <div className="p-4 rounded-xl bg-[var(--color-bg-secondary)]">
                                     <p className="text-sm text-[var(--color-text-muted)] mb-1">Category</p>
-                                    <p className="font-medium" style={{ color: categoryData.color }}>
-                                        {categoryData.icon} {categoryData.label}
+                                    <p className="font-medium" style={{ color: category.color }}>
+                                        {category.icon} {category.label}
                                     </p>
                                 </div>
                                 <div className="p-4 rounded-xl bg-[var(--color-bg-secondary)]">
