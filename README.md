@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📊 Data Insights Hub
 
-## Getting Started
+<div align="center">
 
-First, run the development server:
+### **[🚀 View Live Site →](https://ericdataplus.github.io/my-data-analysis-sites-main-site-hub/)**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+A curated portfolio showcasing interactive data analysis projects with visualizations, machine learning models, and insights from diverse datasets.
+
+[![GitHub Pages](https://img.shields.io/badge/Hosted%20on-GitHub%20Pages-blue?style=for-the-badge&logo=github)](https://ericdataplus.github.io/my-data-analysis-sites-main-site-hub/)
+[![Built with Next.js](https://img.shields.io/badge/Built%20with-Next.js-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+
+</div>
+
+---
+
+## ✨ Features
+
+- **10+ Data Analysis Projects** - From Kaggle datasets to NASA exoplanet data
+- **Interactive Visualizations** - Explore each project through embedded previews
+- **Key Insights Badges** - Standout stats highlighted on each project
+- **Dataset Size Indicators** - See the scale of each analysis at a glance
+- **Category Filtering** - Browse by Machine Learning, Space, Finance & more
+- **Search** - Find projects by name, description, or tags
+- **Instant Thumbnails** - Pre-generated optimized screenshots
+
+## 🛠️ Tech Stack
+
+- **Next.js 16** - React framework with static export
+- **TypeScript** - Type-safe development
+- **Tailwind CSS** - Utility-first styling
+- **GitHub Pages** - Free hosting with automatic deployment
+- **Playwright** - Automated screenshot generation
+
+## 📁 Project Structure
+
+```
+src/
+├── app/                    # Next.js app router pages
+├── components/             # Reusable React components
+├── config/
+│   └── sites.ts           # ⭐ Add new projects here
+public/
+└── thumbnails/            # Optimized project screenshots
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ➕ Adding New Projects
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Edit `src/config/sites.ts` and add a new entry:
+```typescript
+{
+  id: 'your-project-id',
+  name: 'Your Project Name',
+  description: 'Brief description',
+  url: 'https://ericdataplus.github.io/your-repo/',
+  repoUrl: 'https://github.com/Ericdataplus/your-repo',
+  category: 'kaggle', // or 'machine-learning', 'space', etc.
+  tags: ['tag1', 'tag2'],
+  keyInsight: { value: '95%', label: 'Accuracy' },
+  datasetSize: { value: '50K', label: 'rows' },
+  dateAdded: '2024-12-26',
+}
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. Generate thumbnail:
+```bash
+npm run generate-thumbnails
+npm run optimize-thumbnails
+```
 
-## Learn More
+3. Commit and push - auto-deploys to GitHub Pages!
 
-To learn more about Next.js, take a look at the following resources:
+## 🚀 Local Development
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm install
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Open [http://localhost:3000](http://localhost:3000)
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<div align="center">
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**[View Live Site](https://ericdataplus.github.io/my-data-analysis-sites-main-site-hub/)** · [Report Bug](https://github.com/Ericdataplus/my-data-analysis-sites-main-site-hub/issues)
+
+</div>
